@@ -1,0 +1,23 @@
+@import '../style/var';
+
+.fy-rate {
+  user-select: none;
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    padding: 0 @rate-horizontal-padding;
+  }
+
+  &__icon {
+    width: 1em;
+
+    &--half {
+      position: absolute;
+      top: 0;
+      left: @rate-horizontal-padding;
+      width: .5em;
+      overflow: hidden;
+    }
+  }
+}

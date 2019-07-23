@@ -1,0 +1,150 @@
+@import '../style/var';
+
+.fy-step {
+  flex: 1;
+  font-size: 14px;
+  position: relative;
+  color: @gray-dark;
+
+  &__circle {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: @gray-dark;
+  }
+
+  &--horizontal {
+    float: left;
+
+    &:first-child {
+      .fy-step__title {
+        transform: none;
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      position: absolute;
+      right: 10px;
+      width: auto;
+
+      .fy-step__title {
+        transform: none;
+        margin-left: 0;
+      }
+
+      .fy-step__circle-container {
+        left: auto;
+        right: -9px;
+      }
+    }
+
+    .fy-step__circle-container {
+      position: absolute;
+      top: 28px;
+      left: -8px;
+      padding: 0 8px;
+      background-color: @white;
+      z-index: 1;
+    }
+
+    .fy-step__title {
+      font-size: 12px;
+      transform: translate3d(-50%, 0, 0);
+      display: inline-block;
+      margin-left: 3px;
+    }
+
+    .fy-step__line {
+      position: absolute;
+      left: 0;
+      top: 30px;
+      width: 100%;
+      height: 1px;
+      background-color: @border-color;
+    }
+
+    &.fy-step--process {
+      color: @text-color;
+
+      .fy-step__circle-container {
+        top: 24px;
+      }
+
+      .van-icon {
+        font-size: 12px;
+        color: @green;
+        display: block;
+      }
+    }
+  }
+
+  &--vertical {
+    float: none;
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 10px 10px 10px 0;
+
+    &:not(:last-child)::after {
+      border-bottom-width: 1px;
+    }
+
+    &:first-child {
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background-color: @white;
+        top: 0;
+        left: -15px;
+        z-index: 1;
+      }
+    }
+
+    .fy-step__circle-container > i {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .fy-step__circle {
+      top: 16px;
+      left: -17px;
+    }
+
+    .fy-step__line {
+      position: absolute;
+      top: 16px;
+      left: -15px;
+      width: 1px;
+      height: 100%;
+      background-color: @border-color;
+    }
+
+    &.fy-step--process {
+      .van-icon {
+        top: 12px;
+        left: -20px;
+        line-height: 1;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &:last-child {
+    .fy-step__line {
+      width: 0;
+    }
+  }
+
+  &--finish {
+    color: @text-color;
+
+    .fy-step__circle,
+    .fy-step__line {
+      background-color: @green;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import '../style/var';
+
+.fy-swipe-cell {
+  overflow: hidden;
+  position: relative;
+
+  &__left,
+  &__right {
+    top: 0;
+    height: 100%;
+    position: absolute;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background: #f44;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  &__left {
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  &__right {
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}
