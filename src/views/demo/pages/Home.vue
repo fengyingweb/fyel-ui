@@ -24,6 +24,14 @@
 
 <script>
 import {Collapse, CollapseItem} from 'fy-elui'
+import {
+  getQueryString,
+  stringifyQuery,
+  isEmpty,
+  inBrowser,
+  uniq
+} from '@/utils/tools'
+
 export default {
   name: 'home',
   components: {
@@ -129,7 +137,167 @@ export default {
   methods: {
     goToPage (name) {
       this.$router.push({name: name})
+    },
+
+    test() {
+      let params = {
+        id: 12345678,
+        pageNo: 1,
+        pageSize: 10,
+        pages: ['home', 'page', 'about']
+      }
+      console.log(stringifyQuery(params));
+      console.log(getQueryString(stringifyQuery(params)));
+
+      let query = window.location.href;
+      query = query.slice(query.indexOf('?'));
+      console.log(query);
+      console.log(getQueryString(query));
+
+      console.log(isEmpty({}));
+      console.log(isEmpty([]));
+      console.log(isEmpty(''));
+      console.log(isEmpty(null));
+      console.log(isEmpty(0));
+      console.log(isEmpty('1'));
+
+      console.log(inBrowser);
+      let arr1 = [1, 2, 4, 6, 6, 2, 8, 2, 1];
+      console.time('test1')
+      console.log(uniq(arr1));
+      console.timeEnd('test1')
+
+      let arr2 = [
+        {x: 1, y: 2},
+        {x: 3, y: 4},
+        {x: 5, y: 6},
+        {x: 1, y: 2},
+        {x: 3, y: 7}
+      ];
+      console.log(uniq(arr2, 'x'));
+      
+      console.time('time2')
+      console.log(this.dup1(arr1));
+      console.timeEnd('time2')
+
+      console.time('time3')
+      console.log(this.dup2(arr1));
+      console.timeEnd('time3');
+ 
+      console.time('time4')
+      console.log(this.dup3(arr1));
+      console.timeEnd('time4')
+
+      console.log(this.dup4(arr1));
+
+      console.time('time5')
+      console.log(this.sortArr1(arr1));
+      console.timeEnd('time5')
+      
+      let arr3 = [90, 43, 100, 2, 3, 5, 69, 35, 8, 2, 3, 10];
+      console.time('time6')
+      console.log(this.sortArr2(arr3));
+      console.timeEnd('time6');
+    },
+
+    dup1(arr) {
+      let result = [];
+      let length = arr.length;
+      let isRepeat;
+      for( let index = 0; index < length; index++) {
+        isRepeat = false;
+        for(let j = 0; j < result.length; j++) {
+          if (arr[index] === result[j]) {
+            isRepeat = true;
+            break;
+          }
+        }
+
+        if (!isRepeat) {
+          result.push(arr[index]);
+        }
+      }
+      return result;
+    },
+
+    dup2(arr) {
+      let result = [];
+      let {length} = arr;
+      let isRepeat;
+      for( let i = 0; i < length; i++) {
+        isRepeat = false;
+        for (let j = i + 1; j < length; j++) {
+          if (arr[i] === arr[j]) {
+            isRepeat = true;
+            break;
+          }
+        }
+
+        if (!isRepeat) {
+          result.push(arr[i]);
+        }
+      }
+
+      return result;
+    },
+
+    dup3(arr) {
+      let result = [];
+      let {length} = arr;
+      for (let i = 0; i < length; i++) {
+        if (arr.indexOf(arr[i]) === i) {
+          result.push(arr[i]);
+        }
+      }
+      return result;
+    },
+
+    dup4(arr) {
+      let result = [];
+      arr.forEach(item=> {
+        if (!result.includes(item)) {
+          result.push(item);
+        }
+      });
+      return result;
+    },
+
+    // 冒泡排序
+    sortArr1(arr) {
+      let value = arr[0];
+      let {length} = arr;
+      for (let i = 0; i < length; i++) {
+        for (let j = i + 1; j < length; j++) {
+          if (arr[i] > arr[j]) {
+            value = arr[i];
+            arr[i] = arr[j];
+            arr[j] = value;
+          }
+        }
+      }
+      return arr;
+    },
+
+    // 快速排序 去中间值和数组的值比较后, 小于中间值得放左边, 大于中间值的放右边, 在合并反复执行
+    sortArr2(arr) {
+      if (arr.length <=1 ) return arr;
+      let middleIndex = Math.ceil(arr.length / 2);
+      let mCur = arr.splice(middleIndex, 1)[0];
+      let left = [];
+      let right = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < mCur) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
+      return this.sortArr2(left).concat(mCur, this.sortArr2(right));
     }
+  },
+
+  mounted() {
+    this.test();
   }
 }
 </script>
