@@ -284,3 +284,53 @@ export function uniq(arr, iteratee) {
   }
   return result;
 }
+
+/**
+ * 函数节流  用于搜索需求时延迟请求  同时减少请求次数，提高性能
+ * @param  func  function
+ * @param delay  需要延迟的时间
+ */
+export function throttling(func, delay) {
+  let timer;
+  return function(...args) {
+      if (timer) {
+          clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+          func.apply(this, args)
+      }, delay)
+  }
+}
+
+// 防抖函数，让某个函数在上一次执行后，满足等待某个时间内不再触发此函数后再执行，
+// 而在这个等待时间内再次触发此函数，等待时间会重新计算
+export function debounce(func, wait, immediate) {
+  let timeout, args, context, timestamp, result;
+
+  let later = function() {
+      let last = Date.now() - timestamp;
+      if (last < wait && last >= 0) {
+          timeout = setTimeout(later, wait - last);
+      } else {
+          timeout = null;
+          if (!immediate) {
+              result = func.apply(context, args);
+              if (!timeout) context = args = null;
+          }
+      }
+  };
+
+  return function(...argus) {
+      context = this;
+      args = argus;
+      timestamp = Date.now();
+      let callNow = immediate && !timeout;
+      if (!timeout) timeout = setTimeout(later, wait);
+      if (callNow) {
+          result = func.apply(context, args);
+          context = args = null;
+      }
+
+      return result;
+  };
+}

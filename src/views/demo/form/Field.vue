@@ -3,7 +3,7 @@
     <fy-nav-bar title="Field" left-arrow @click-left="goBack"></fy-nav-bar>
     <div class="wrapper-main">
       <fy-cell-group :title="`基础用法${value1}`">
-        <fy-field v-model="value1" placeholder="请输入用户名"></fy-field>
+        <fy-field v-model="value1" placeholder="请输入用户名" @input="handleInput"></fy-field>
       </fy-cell-group>
 
       <fy-cell-group title="自定义类型">
@@ -14,6 +14,7 @@
           required
           clearable
           placeholder="请输入用户名..."
+          @input="inputUserName"
           @click-right-icon="$toast('question')">
         </fy-field>
 
@@ -31,6 +32,7 @@
 
 <script>
 import {Field} from 'fy-elui'
+import {debounce, throttling} from '@/utils/tools'
 export default {
   components: {
     [Field.name]: Field
@@ -45,7 +47,17 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1)
-    }
+    },
+
+    // 防抖
+    handleInput: debounce(function(val){
+      console.log(val);
+    }, 2000),
+
+    // 节流
+    inputUserName: throttling(function(val) {
+      console.log(val);
+    }, 2000)
   }
 }
 </script>
