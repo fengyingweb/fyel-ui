@@ -13,7 +13,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
   NProgress.start()
   // const token = localStorageTool.getItem('token');
-  // if (token && (hashList.indexOf(window.location.hash) === -1)) {
+  // if (token) {
   //   console.log(token);
   //   config.headers['accessToken'] = token;
   // }

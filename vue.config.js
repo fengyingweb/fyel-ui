@@ -43,13 +43,13 @@ function getPages () {
   let entrys = getEntrys()
   let htmlFiles = getHtmlTemplate()
 
-  for (let key in entrys) {
+  Object.keys(entrys).forEach(key=> {
     pages[key] = {}
     pages[key]['entry'] = entrys[key]
     pages[key]['template'] = htmlFiles[key].path
     pages[key]['filename'] = key + '.html'
     pages[key]['chunks'] = ['chunk-vendors', 'chunk-common', htmlFiles[key].chunk]
-  }
+  })
   console.log(pages)
   return pages
 }

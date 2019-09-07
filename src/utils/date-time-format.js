@@ -3,7 +3,7 @@ export function dateTimeFormat (date, fmt = 'YYYY-MM-DD HH:mm:ss') {
     return ''
   }
   if (typeof date === 'string') {
-    date = new Date(date.replace(/-/g, '/'))
+    date = new Date(date.replace(/-/g, '/')) // 处理ios不支持'-'格式的时间日期问题
   }
   if (typeof date === 'number') {
     date = new Date(date)
@@ -27,6 +27,8 @@ export function dateTimeFormat (date, fmt = 'YYYY-MM-DD HH:mm:ss') {
     '5': '\u4e94',
     '6': '\u516d'
   }
+
+  // RegExp.$1正则表达式匹配到的字符串
   if (/(Y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
   }
