@@ -326,6 +326,14 @@ const  routes = [
     }
   },
   {
+    path: '/qrcode',
+    name: 'qrcode',
+    component: _import('show/QRcode'),
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
     path: '/area',
     name: 'area',
     component: _import('service/Area'),

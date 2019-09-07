@@ -47,6 +47,7 @@ import Tag from './tag/index'
 import Lazyload from './lazyLoad/index'
 import Steps from './steps/index'
 import Step from './step/index'
+import QRcode from './qrcode/index'
 
 // 导航组件
 import IndexBar from './indexBar/index'
@@ -74,7 +75,7 @@ import Axios from './axios/index'
 // 图表
 import {Chart, Line, ChartArea, Bar, Pie, Point, Scale, Axis, Guide, Tooltip, Legend} from './charts/index'
 
-const version = '1.0.7'
+const version = '1.0.8'
 
 const components = [
   Button,
@@ -112,6 +113,7 @@ const components = [
   Lazyload,
   Steps,
   Step,
+  QRcode,
   Actionsheet,
   Dialog,
   Loading,
@@ -195,6 +197,7 @@ export {
   Lazyload,
   Steps,
   Step,
+  QRcode,
   Actionsheet,
   Dialog,
   Loading,

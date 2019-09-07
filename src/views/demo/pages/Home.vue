@@ -96,7 +96,8 @@ export default {
             {id: '34', title: 'swipe', path: '/swipe'},
             {id: '35', title: 'noticeBar', path: '/noticeBar'},
             {id: '36', title: 'tag', path: '/tag'},
-            {id: '40', title: 'steps', path: '/steps'}
+            {id: '40', title: 'steps', path: '/steps'},
+            {id: '41', title: 'qrcode', path: '/qrcode'}
           ]
         },
         
