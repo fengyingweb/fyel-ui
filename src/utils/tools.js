@@ -334,3 +334,57 @@ export function debounce(func, wait, immediate) {
       return result;
   };
 }
+
+export function isIOS9() {
+  // 获取固件版本
+  let getOsv = function () {
+      let reg = /OS ((\d+_?){2,3})\s/;
+      if (navigator.userAgent.match(/iPad/i) || navigator.platform.match(/iPad/i) || navigator.userAgent.match(/iP(hone|od)/i) || navigator.platform.match(/iP(hone|od)/i)) {
+          let osv = reg.exec(navigator.userAgent);
+          if (osv.length > 0) {
+              return osv[0].replace('OS', '').replace('os', '').replace(/\s+/g, '').replace(/_/g, '.');
+          }
+      }
+      return '';
+  };
+  let osv = getOsv();
+  let osvArr = osv.split('.');
+  // 初始化显示ios9引导
+  if (osvArr && osvArr.length > 0) {
+      if (parseInt(osvArr[0]) >= 9) {
+          return true;
+      }
+  }
+  return false;
+}
+
+// a标签方式打开app或者下载app
+export const aCallAPP = (aEl, url, downloadUrl, ios9Type) => {
+  console.log('[aCallAPP1]' + url);
+  let timeout;
+  let t = Date.now();
+  let interval = ios9Type ? 2500 : 2000;
+  timeout && clearTimeout(timeout);
+  timeout = setTimeout(function () {
+      if (Date.now() - t < interval + 1000) {
+          console.log('[aCallAPP2]' + downloadUrl);
+          location.href = downloadUrl;
+      }
+  }, interval);
+  if (aEl) {
+      aEl.href = url;
+  } else {
+      location.href = url;
+  }
+  let ev = 'visibilitychange' in window ? 'visibilitychange' : 'webkitvisibilitychange';
+  document.addEventListener(ev, function () {
+      let tag = document.hidden || document.webkitHidden;
+      if (tag) {
+          clearTimeout(timeout);
+      }
+  });
+
+  window.addEventListener('pagehide', function () {
+      clearTimeout(timeout);
+  });
+};
