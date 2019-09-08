@@ -2,76 +2,83 @@
 
 局部滚动组件，支持惯性、吸边回弹。纵向可支持下拉刷新和上拉加载，横向可支持滚动末尾跳转。
 
+## 使用指南
+``` javascript
+import { Scroller } from 'fy-elui';
+
+Vue.use(Scroller)
+```
+
 ## 基本用法
 
 横向使用，支持惯性、吸边回弹，支持滚动末尾跳转。
 
 ```html
-<nut-scroller @jump="jump()">
-    <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData" :key="index">
-        <dl class="nut-scroller-item-info">
+<fy-scroller @jump="jump()">
+    <div slot="list" class="fy-hor-list-item" v-for="(item, index) of listData" :key="index">
+        <dl class="fy-scroller-item-info">
             <dt>防水升级版 蓝 迷你小音</dt>
             <dd>2019-09-08</dd>
         </dl>
     </div>
-    <slot slot="more"><div class="nut-hor-jump-more">查看更多</div></slot>
-</nut-scroller>
+    <slot slot="more"><div class="fy-hor-jump-more">查看更多</div></slot>
+</fy-scroller>
 ```
 
 横向小于一屏
 ```html
 <div class="hor-panel">
-    <nut-scroller @jump="jump()">
-        <div slot="list" class="nut-hor-list-item" v-for="(item, index) of listData3" :key="index">
-            <dl class="nut-scroller-item-info">
+    <fy-scroller @jump="jump()">
+        <div slot="list" class="fy-hor-list-item" v-for="(item, index) of listData3" :key="index">
+            <dl class="fy-scroller-item-info">
                 <dt>防水升级版 蓝牙音箱 小音</dt>
                 <dd>2019-09-08</dd>
             </dl>
         </div>
-        <slot slot="more" ><div class="nut-hor-jump-more">查看更多</div></slot>
-    </nut-scroller>
+        <slot slot="more" ><div class="fy-hor-jump-more">查看更多</div></slot>
+    </fy-scroller>
 </div>
 ```
 纵向使用，支持下拉刷新和上拉加载更多。
 
 ```html
-<nut-scroller
+<fy-scroller
     :is-un-more="isUnMore1" 
     :is-loading="isLoading1"
     :type="'vertical'"
     @loadMore="loadMoreVert"
     @pulldown="pulldown"
 > 
-    <div slot="list" class="nut-vert-list-panel">
-        <div class="nut-vert-list-item" v-for="(item, index) of listData1" :key="index">
-            <dl class="nut-scroller-item-info">
+    <div slot="list" class="fy-vert-list-panel">
+        <div class="fy-vert-list-item" v-for="(item, index) of listData1" :key="index">
+            <dl class="fy-scroller-item-info">
                 <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
                 <dd>2019-09-08</dd>
             </dl>
         </div>
     </div>
-</nut-scroller>
+</fy-scroller>
 ```
 
 纵向不满一屏
 
 ```html
-<nut-scroller
+<fy-scroller
     :is-un-more="isUnMore2" 
     :is-loading="isLoading2"
     :type="'vertical'"
     @loadMore="loadMoreVert2"
     @pulldown="pulldown2"
 > 
-    <div slot="list" class="nut-vert-list-panel">
-        <div class="nut-vert-list-item" v-for="(item, index) of listData2" :key="index">
-            <dl class="nut-scroller-item-info">
+    <div slot="list" class="fy-vert-list-panel">
+        <div class="fy-vert-list-item" v-for="(item, index) of listData2" :key="index">
+            <dl class="fy-scroller-item-info">
                 <dt>防水升级版 蓝牙音箱 低音炮 IPX7设计 户外便携音响 迷你小音</dt>
                 <dd>2019-09-08</dd>
             </dl>
         </div>
     </div>
-</nut-scroller>
+</fy-scroller>
 ```
 
 ```javascript
