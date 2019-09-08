@@ -48,6 +48,7 @@ import Lazyload from './lazyLoad/index'
 import Steps from './steps/index'
 import Step from './step/index'
 import QRcode from './qrcode/index'
+import Scroller from './scroller/index'
 
 // 导航组件
 import IndexBar from './indexBar/index'
@@ -114,6 +115,7 @@ const components = [
   Steps,
   Step,
   QRcode,
+  Scroller,
   Actionsheet,
   Dialog,
   Loading,
@@ -198,6 +200,7 @@ export {
   Steps,
   Step,
   QRcode,
+  Scroller,
   Actionsheet,
   Dialog,
   Loading,

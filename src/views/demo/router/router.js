@@ -334,6 +334,14 @@ const  routes = [
     }
   },
   {
+    path: '/scroller',
+    name: 'scroller',
+    component: _import('show/Scroller'),
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
     path: '/area',
     name: 'area',
     component: _import('service/Area'),
