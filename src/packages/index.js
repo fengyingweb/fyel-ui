@@ -76,7 +76,7 @@ import Axios from './axios/index'
 // 图表
 import {Chart, Line, ChartArea, Bar, Pie, Point, Scale, Axis, Guide, Tooltip, Legend} from './charts/index'
 
-const version = '1.0.8'
+const version = '1.0.9'
 
 const components = [
   Button,

@@ -2,7 +2,7 @@
   <transition name="fy-dialog-bounce">
     <div :class="['fy-dialog', className]" v-if="value && shouldRender">
       <div :class="titleClass" v-if="title">{{title}}</div>
-      <div class="fy-dialog__content" v-if="$slot.default || message">
+      <div class="fy-dialog__content" v-if="$slots.default || message">
         <slot>
           <div :class="messageClass" v-html="message"></div>
         </slot>
