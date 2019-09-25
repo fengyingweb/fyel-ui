@@ -388,3 +388,53 @@ export const aCallAPP = (aEl, url, downloadUrl, ios9Type) => {
       clearTimeout(timeout);
   });
 };
+
+/**
+ * 图片url转base64
+ * @param url
+ */
+export const canvasToBase64 = (url)=> {
+  return new Promise((resolve, reject)=> {
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    let img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = url + '?' + new Date().getTime();
+    img.onload = ()=> {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      let dataUrl = canvas.toDataURL('image/png');
+      canvas = null;
+      resolve(dataUrl);
+    };
+
+    img.onerror = (error)=> {
+      reject(error);
+    }
+  });
+};
+
+/**
+ * 图片base64格式转blob
+ * @param base64Data
+ * @return blob
+ */
+
+export const dataURItoBlob = (base64Data)=> {
+  let byteString;
+  if(base64Data.split(',')[0].indexOf('base64') >= 0){
+    byteString = atob(base64Data.split(',')[1]);
+  }
+  else{
+    byteString = unescape(base64Data.split(',')[1]);
+  }
+  var mimeString = base64Data.split(',')[0].split(':')[1].split(';')[0];
+  var ia = new Uint8Array(byteString.length);
+  for(var i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ia], {
+    type: mimeString
+  });
+};
