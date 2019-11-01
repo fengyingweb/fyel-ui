@@ -59,6 +59,7 @@ module.exports = {
   outputDir: 'dist',
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   assetsDir: 'static',
+  productionSourceMap: false, // 打包生产时不要把源码暴露出去
   devServer: {
     host: ip.address(),
     port: 8081,
