@@ -12,8 +12,21 @@ export const isChrome = ua && /chrome\/\d+/.test(ua) && !isEdge;
 export const isFF = ua && /firefox\/\d+/.test(ua);
 export const isAndroid = ua && /android/.test(ua);
 export const isIOS = ua && /iphone|ipad|ipod|ios/.test(ua);
+export const isWeiXin = ua && /micromessenger/.test(ua);
+export const isPCWX = ua && /windows/.test(ua);
 
 export const hasOwnProperty = Object.prototype.hasOwnProperty;
+
+const devicePixelRatio = window.devicePixelRatio
+const width = window.screen.width
+const height = window.screen.height
+
+// iPhone X、iPhone XS
+export const isIPhoneX = /iphone/gi.test(ua) && devicePixelRatio && devicePixelRatio === 3 && width === 375 && height === 812;
+// iPhone XS Max
+export const isIPhoneXSMax = /iphone/gi.test(ua) && devicePixelRatio && devicePixelRatio === 3 && width === 414 && height === 896;
+// iPhone XR
+export const isIPhoneXR = /iphone/gi.test(ua) && devicePixelRatio && devicePixelRatio === 2 && width === 414 && height === 896;
 
 // 数据类型判断
 export function isUndef(value) {
