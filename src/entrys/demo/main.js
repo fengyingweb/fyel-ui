@@ -1,5 +1,5 @@
 import 'babel-polyfill' // 解决ie9, 及高级浏览器低版本不能使用es6语法问题
-import 'amfe-flexible'
+// import 'amfe-flexible'
 import '@/packages/style/base.less'
 import '@/styles/app.scss'
 import Vue from 'vue'
