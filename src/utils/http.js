@@ -5,8 +5,8 @@ import { clearStorage } from './storage/clear_storage'
 // 创建axios实例
 const service = axios.create({
   timeout: 15000, // 请求超时时间
-  withCredentials: true,
-  headers: {'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Content-Type': 'application/json'}
+  withCredentials: true, // 是否允许携带cookie, true允许
+  // headers: {'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Content-Type': 'application/json'}
 })
 
 // request拦截器
