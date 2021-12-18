@@ -26,10 +26,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import '@/styles/mixin.scss';
+<style lang="less" scoped>
+  @import '../styles/mixin.less';
   .wrapper {
-    @include flex();
+    .flex();
     width: 100%;
     height: 100%;
   }

@@ -1,7 +1,7 @@
 import 'babel-polyfill' // 解决ie9, 及高级浏览器低版本不能使用es6语法问题
-// import 'amfe-flexible'
+// import 'lib-flexible'
 import '@/packages/style/base.less'
-import '@/styles/app.scss'
+import '@/styles/app.less'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from '@/views/demo/App.vue'

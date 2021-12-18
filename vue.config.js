@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs-extra')
 const glob = require('glob')
-const ip = require('ip')
 const TerserPlugin = require('terser-webpack-plugin')
 
 function resolve (dir) {
@@ -61,7 +60,7 @@ module.exports = {
   assetsDir: 'static',
   productionSourceMap: false, // 打包生产时不要把源码暴露出去
   devServer: {
-    host: ip.address(),
+    host: '0.0.0.0',
     port: 8081,
     open: true,
     openPage: 'demo.html',

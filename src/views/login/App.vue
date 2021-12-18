@@ -17,14 +17,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import '@/styles/mixin.scss';
-  $width: 375px;
+<style lang="less" scoped>
+  @import '../../styles/mixin.less';
+  @width: 375px;
   #app {
-    @include flex($justify: flex-start);
+    .flex(@justify: flex-start);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    width: $width;
+    width: @width;
     height: 100%;
     margin: 0 auto;
   }

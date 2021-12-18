@@ -9,6 +9,7 @@ module.exports = {
     //   "mediaQuery": false, // （布尔值）允许在媒体查询中转换px
     //   "minPixelValue": 1.01 //设置要替换的最小像素值(0px会被转rem)。 默认 0
     // },
+
     "postcss-px-to-viewport": {
       unitToConvert: 'px', //  需要转换的单位，默认为"px"
       viewportWidth: 375, // 设计稿的视口宽度
