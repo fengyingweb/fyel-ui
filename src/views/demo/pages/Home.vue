@@ -98,7 +98,8 @@ export default {
             {id: '36', title: 'tag', path: '/tag'},
             {id: '40', title: 'steps', path: '/steps'},
             {id: '41', title: 'qrcode', path: '/qrcode'},
-            {id: '42', title: 'scroller', path: '/scroller'}
+            {id: '42', title: 'scroller', path: '/scroller'},
+            {id: '43', title: 'countDown', path: '/countDown'}
           ]
         },
         

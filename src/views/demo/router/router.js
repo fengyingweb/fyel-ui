@@ -342,6 +342,14 @@ const  routes = [
     }
   },
   {
+    path: '/countDown',
+    name: 'countDown',
+    component: _import('show/CountDown'),
+    meta: {
+      requireAuth: false
+    }
+  },
+  {
     path: '/area',
     name: 'area',
     component: _import('service/Area'),

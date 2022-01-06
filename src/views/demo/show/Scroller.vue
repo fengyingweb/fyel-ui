@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <fy-nav-bar title="Tag" left-arrow @click-left="goBack"></fy-nav-bar>
+    <fy-nav-bar title="Scroller" left-arrow @click-left="goBack"></fy-nav-bar>
     <div class="content scroller-content">
       <h2 class="title">默认横向滑动</h2>
       <fy-scroller @jump="jump">
