@@ -8,7 +8,7 @@
 
 ```js
 import Vue from 'vue';
-import { CountDown } from 'fyt';
+import { CountDown } from 'fy-elui';
 
 Vue.use(CountDown);
 ```
