@@ -49,6 +49,7 @@ import Steps from './steps/index'
 import Step from './step/index'
 import QRcode from './qrcode/index'
 import Scroller from './scroller/index'
+import CountDown from './countDown/index'
 
 // 导航组件
 import IndexBar from './indexBar/index'
@@ -116,6 +117,7 @@ const components = [
   Step,
   QRcode,
   Scroller,
+  CountDown,
   Actionsheet,
   Dialog,
   Loading,
@@ -201,6 +203,7 @@ export {
   Step,
   QRcode,
   Scroller,
+  CountDown,
   Actionsheet,
   Dialog,
   Loading,
